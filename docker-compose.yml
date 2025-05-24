@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - portainer_data:/data
+    ports:
+      - "9000:9000"
+    
+  whisper-pipeline:
+    build: 
+      context: ./whisper-pipeline
+    container_name: whisper-pipeline
+    restart: unless-stopped
+    volumes:
+      - ./whisper-pipeline:/app
+      - ./data/videos:/app/data/videos
+      - ./data/audio:/app/data/audio
+      - ./data/transcripts:/app/data/transcripts
+      - ./data/models:/app/data/models
+      - ./data/logs:/app/data/logs
+    environment:
+      - MODEL_SIZE=base # tiny, base, small, medium, large
+      - LANGUAGE=en # optional: specify language code to improve accuracy
+      - THREADS=4 # adjust based on your Synology NAS CPU
+      - DEVICE=cpu # only CPU is supported by whisper.cpp
+      - SCAN_INTERVAL=60 # how often to check for new videos (in seconds)
+
+volumes:
+  portainer_data:

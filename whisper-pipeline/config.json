@@ -1,0 +1,35 @@
+{
+  "models": {
+    "tiny": {
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin",
+      "size": "75M"
+    },
+    "base": {
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin",
+      "size": "142M"
+    },
+    "small": {
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin",
+      "size": "466M"
+    },
+    "medium": {
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin",
+      "size": "1.5G"
+    },
+    "large": {
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large.bin",
+      "size": "3G"
+    }
+  },
+  "file_extensions": {
+    "video": ["mp4", "mkv", "avi", "mov", "wmv", "flv", "webm"],
+    "audio": ["mp3", "wav", "ogg", "flac", "m4a"]
+  },
+  "paths": {
+    "videos": "/app/data/videos",
+    "audio": "/app/data/audio",
+    "transcripts": "/app/data/transcripts",
+    "models": "/app/data/models",
+    "logs": "/app/data/logs"
+  }
+}

@@ -1,0 +1,41 @@
+modules = ["nodejs-20"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["docker-compose"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Docker Compose"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "docker_workflow"
+
+[[workflows.workflow]]
+name = "Docker Compose"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "docker-compose up"
+waitForPort = 9000
+
+[[workflows.workflow]]
+name = "docker_workflow"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mkdir -p ./data/videos ./data/audio ./data/transcripts ./data/models ./data/logs && docker-compose up -d && docker ps"
+
+[deployment]
+run = ["sh", "-c", "docker-compose up"]
