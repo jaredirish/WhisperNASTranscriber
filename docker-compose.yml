@@ -1,36 +1,21 @@
-version: '3'
-
 services:
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - portainer_data:/data
-    ports:
-      - "9000:9000"
-    
   whisper-pipeline:
     build: 
       context: ./whisper-pipeline
+      dockerfile: Dockerfile
     container_name: whisper-pipeline
     restart: unless-stopped
     volumes:
-      - ./whisper-pipeline:/app
       - ./data/videos:/app/data/videos
       - ./data/audio:/app/data/audio
       - ./data/transcripts:/app/data/transcripts
       - ./data/models:/app/data/models
       - ./data/logs:/app/data/logs
     environment:
-      - MODEL_SIZE=small # Optimized for DS720+ with 10GB RAM
-      - LANGUAGE=en # optional: specify language code to improve accuracy
-      - THREADS=4 # DS720+ has 2 cores/4 threads
-      - DEVICE=cpu # only CPU is supported by whisper.cpp
-      - SCAN_INTERVAL=120 # Increased interval to reduce CPU load
-
-volumes:
-  portainer_data:
+      - MODEL_SIZE=small
+      - LANGUAGE=en
+      - THREADS=4
+      - DEVICE=cpu
+      - SCAN_INTERVAL=120
+    mem_limit: 2g
+    mem_reservation: 1g
