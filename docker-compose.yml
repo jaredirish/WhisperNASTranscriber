@@ -6,11 +6,11 @@ services:
     container_name: whisper-pipeline
     restart: unless-stopped
     volumes:
-      - whisper_videos:/app/data/videos
-      - whisper_audio:/app/data/audio
-      - whisper_transcripts:/app/data/transcripts
-      - whisper_models:/app/data/models
-      - whisper_logs:/app/data/logs
+      - /docker/whisper/data/videos:/app/data/videos
+      - /docker/whisper/data/audio:/app/data/audio
+      - /docker/whisper/data/transcripts:/app/data/transcripts
+      - /docker/whisper/data/models:/app/data/models
+      - /docker/whisper/data/logs:/app/data/logs
     environment:
       - MODEL_SIZE=small
       - LANGUAGE=en
@@ -19,10 +19,3 @@ services:
       - SCAN_INTERVAL=120
     mem_limit: 2g
     mem_reservation: 1g
-
-volumes:
-  whisper_videos:
-  whisper_audio:
-  whisper_transcripts:
-  whisper_models:
-  whisper_logs:
