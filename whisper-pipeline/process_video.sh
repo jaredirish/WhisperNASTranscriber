@@ -23,7 +23,7 @@ FILENAME=$(basename "$VIDEO_FILE")
 FILENAME_NO_EXT="${FILENAME%.*}"
 
 # Convert video to audio
-AUDIO_OUTPUT=$(/app/convert_audio.sh "$VIDEO_FILE")
+AUDIO_OUTPUT=$(/app/convert_audio.sh "$VIDEO_FILE" 2>/dev/null)
 AUDIO_EXIT_CODE=$?
 
 if [ $AUDIO_EXIT_CODE -ne 0 ]; then

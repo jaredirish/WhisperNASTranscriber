@@ -1,0 +1,41 @@
+
+[INFO] 2025-05-30 12:48:38 - Starting video monitoring service. Checking for new videos every 120 seconds.
+
+[INFO] 2025-05-30 12:48:39 - New video found: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv
+
+[INFO] 2025-05-30 12:48:39 - Processing video: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv
+
+[SUCCESS] 2025-05-30 12:50:07 - Video converted to audio: [INFO] 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[SUCCESS] 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[INFO] 2025-05-30 12:50:07 - Transcribing audio: [INFO] 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[SUCCESS] 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3 with model: small
+
+/app/transcribe.sh: line 43: ./main: No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n''/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3.txt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n''/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3.vtt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n''/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3.srt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3'$'\n''/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3.json': No such file or directory
+
+[ERROR] 2025-05-30 12:50:07 - Failed to transcribe [INFO] 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[SUCCESS] 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[ERROR] 2025-05-30 12:50:07 - Failed to transcribe audio: [INFO] 2025-05-30 12:48:39 - Converting video to audio: /app/data/videos/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mkv -> /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+[SUCCESS] 2025-05-30 12:50:07 - Audio extraction successful: /app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
+/app/data/audio/Baking.It.S01E01.720p.PCOK.WEBRip.x264-GalaxyTV.mp3
+
