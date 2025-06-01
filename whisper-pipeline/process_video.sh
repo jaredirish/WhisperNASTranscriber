@@ -42,7 +42,7 @@ log_success "Video converted to audio: $AUDIO_FILE"
 TRANSCRIBE_EXIT_CODE=$?
 
 if [ $TRANSCRIBE_EXIT_CODE -ne 0 ]; then
-    log_error "Failed to transcribe audio: $AUDIO_OUTPUT"
+    log_error "Failed to transcribe audio: $AUDIO_FILE"
     exit 1
 fi
 

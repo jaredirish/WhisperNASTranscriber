@@ -75,7 +75,15 @@ else
 fi
 
 log_info "Using whisper executable: $WHISPER_EXEC"
-$WHISPER_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
+
+# Use different parameters based on executable type
+if [[ "$WHISPER_EXEC" == *"whisper-cli"* ]]; then
+    # New whisper-cli parameters
+    $WHISPER_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -oj
+else
+    # Old main executable parameters
+    $WHISPER_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
+fi
 
 # Move output files to transcripts directory
 mv "$AUDIO_FILE.txt" "$TRANSCRIPT_FILE"
