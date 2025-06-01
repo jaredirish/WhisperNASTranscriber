@@ -40,16 +40,34 @@ fi
 
 # Run whisper.cpp
 cd /app/whisper.cpp
-if [ ! -f "./main" ]; then
-    log_error "Whisper.cpp main executable not found. Attempting to build..."
+
+# Check for main executable in both possible locations
+MAIN_EXEC=""
+if [ -f "./main" ]; then
+    MAIN_EXEC="./main"
+elif [ -f "./build/bin/main" ]; then
+    MAIN_EXEC="./build/bin/main"
+elif [ -f "./build/main" ]; then
+    MAIN_EXEC="./build/main"
+else
+    log_info "Whisper.cpp main executable not found. Building..."
     make
-    if [ ! -f "./main" ]; then
-        log_error "Failed to build whisper.cpp"
+    
+    # Check again after build
+    if [ -f "./main" ]; then
+        MAIN_EXEC="./main"
+    elif [ -f "./build/bin/main" ]; then
+        MAIN_EXEC="./build/bin/main"
+    elif [ -f "./build/main" ]; then
+        MAIN_EXEC="./build/main"
+    else
+        log_error "Failed to build whisper.cpp - executable not found after build"
         exit 1
     fi
 fi
 
-./main -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
+log_info "Using whisper executable: $MAIN_EXEC"
+$MAIN_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
 
 # Move output files to transcripts directory
 mv "$AUDIO_FILE.txt" "$TRANSCRIPT_FILE"
