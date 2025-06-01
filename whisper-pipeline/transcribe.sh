@@ -85,13 +85,32 @@ else
     $WHISPER_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
 fi
 
-# Move output files to transcripts directory
-mv "$AUDIO_FILE.txt" "$TRANSCRIPT_FILE"
-mv "$AUDIO_FILE.vtt" "$TRANSCRIPT_VTT"
-mv "$AUDIO_FILE.srt" "$TRANSCRIPT_SRT"
-mv "$AUDIO_FILE.json" "$TIMESTAMP_FILE"
+# Check which output files were created and move them
+TRANSCRIPT_SUCCESS=false
 
-if [ $? -eq 0 ] && [ -f "$TRANSCRIPT_FILE" ]; then
+if [ -f "$AUDIO_FILE.txt" ]; then
+    mv "$AUDIO_FILE.txt" "$TRANSCRIPT_FILE"
+    TRANSCRIPT_SUCCESS=true
+    log_info "Moved TXT transcript to $TRANSCRIPT_FILE"
+fi
+
+if [ -f "$AUDIO_FILE.vtt" ]; then
+    mv "$AUDIO_FILE.vtt" "$TRANSCRIPT_VTT"
+    log_info "Moved VTT transcript to $TRANSCRIPT_VTT"
+fi
+
+if [ -f "$AUDIO_FILE.srt" ]; then
+    mv "$AUDIO_FILE.srt" "$TRANSCRIPT_SRT"
+    log_info "Moved SRT transcript to $TRANSCRIPT_SRT"
+fi
+
+# Handle both .json and .json output files depending on whisper version
+if [ -f "$AUDIO_FILE.json" ]; then
+    mv "$AUDIO_FILE.json" "$TIMESTAMP_FILE"
+    log_info "Moved JSON transcript to $TIMESTAMP_FILE"
+fi
+
+if [ "$TRANSCRIPT_SUCCESS" = true ] && [ -f "$TRANSCRIPT_FILE" ]; then
     log_success "Transcription successful: $TRANSCRIPT_FILE"
     
     # Count words in transcript
@@ -100,6 +119,9 @@ if [ $? -eq 0 ] && [ -f "$TRANSCRIPT_FILE" ]; then
     
     exit 0
 else
-    log_error "Failed to transcribe $AUDIO_FILE"
+    log_error "Failed to transcribe $AUDIO_FILE - no output files generated"
+    log_error "Expected files: $AUDIO_FILE.txt, $AUDIO_FILE.vtt, $AUDIO_FILE.srt"
+    # List what files actually exist in the audio directory for debugging
+    log_error "Files in audio directory: $(ls -la $(dirname "$AUDIO_FILE"))"
     exit 1
 fi
