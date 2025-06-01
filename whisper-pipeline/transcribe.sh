@@ -41,33 +41,41 @@ fi
 # Run whisper.cpp
 cd /app/whisper.cpp
 
-# Check for main executable in both possible locations
-MAIN_EXEC=""
-if [ -f "./main" ]; then
-    MAIN_EXEC="./main"
+# Check for whisper executable (prefer new whisper-cli over deprecated main)
+WHISPER_EXEC=""
+if [ -f "./build/bin/whisper-cli" ]; then
+    WHISPER_EXEC="./build/bin/whisper-cli"
+elif [ -f "./whisper-cli" ]; then
+    WHISPER_EXEC="./whisper-cli"
 elif [ -f "./build/bin/main" ]; then
-    MAIN_EXEC="./build/bin/main"
+    WHISPER_EXEC="./build/bin/main"
+elif [ -f "./main" ]; then
+    WHISPER_EXEC="./main"
 elif [ -f "./build/main" ]; then
-    MAIN_EXEC="./build/main"
+    WHISPER_EXEC="./build/main"
 else
-    log_info "Whisper.cpp main executable not found. Building..."
+    log_info "Whisper executable not found. Building..."
     make
     
     # Check again after build
-    if [ -f "./main" ]; then
-        MAIN_EXEC="./main"
+    if [ -f "./build/bin/whisper-cli" ]; then
+        WHISPER_EXEC="./build/bin/whisper-cli"
+    elif [ -f "./whisper-cli" ]; then
+        WHISPER_EXEC="./whisper-cli"
     elif [ -f "./build/bin/main" ]; then
-        MAIN_EXEC="./build/bin/main"
+        WHISPER_EXEC="./build/bin/main"
+    elif [ -f "./main" ]; then
+        WHISPER_EXEC="./main"
     elif [ -f "./build/main" ]; then
-        MAIN_EXEC="./build/main"
+        WHISPER_EXEC="./build/main"
     else
         log_error "Failed to build whisper.cpp - executable not found after build"
         exit 1
     fi
 fi
 
-log_info "Using whisper executable: $MAIN_EXEC"
-$MAIN_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
+log_info "Using whisper executable: $WHISPER_EXEC"
+$WHISPER_EXEC -m "$MODEL_PATH" -f "$AUDIO_FILE" -t $THREADS $LANG_PARAM -otxt -ovtt -osrt -ojson
 
 # Move output files to transcripts directory
 mv "$AUDIO_FILE.txt" "$TRANSCRIPT_FILE"

@@ -25,7 +25,7 @@ This project sets up an automated pipeline for converting videos to audio and th
 
 Create the following directory structure on your NAS:
 ```
-whisper-pipeline/
+/volume1/docker/whisper/
 ├── data/
 │   ├── videos/      # Place your videos here for processing
 │   ├── audio/       # Extracted audio will be stored here
@@ -34,6 +34,11 @@ whisper-pipeline/
 │   └── logs/        # Log files will be stored here
 ├── whisper-pipeline/ # Contains all the scripts and Dockerfile
 └── docker-compose.yml
+```
+
+Create these directories with:
+```bash
+mkdir -p /volume1/docker/whisper/data/{videos,audio,transcripts,models,logs}
 ```
 
 ### 2. Download and Deploy Using Portainer
@@ -84,14 +89,14 @@ whisper-pipeline/
 
 ## Usage
 
-1. After deploying the stack, the container will automatically start monitoring the `data/videos` directory.
+1. After deploying the stack, the container will automatically start monitoring `/volume1/docker/whisper/data/videos`.
 2. Simply copy or move your video files into this directory.
 3. The system will:
    - Automatically detect new video files
    - Convert them to audio (MP3 format)
    - Transcribe the audio to text using whisper.cpp
    - Generate transcription files in multiple formats (TXT, VTT, SRT, JSON)
-4. All transcription files will be available in the `data/transcripts` directory.
+4. All transcription files will be available in `/volume1/docker/whisper/data/transcripts`.
 
 ## Monitoring and Logs
 

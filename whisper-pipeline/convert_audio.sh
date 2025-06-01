@@ -28,8 +28,6 @@ ffmpeg -i "$VIDEO_FILE" -q:a 0 -map a "$AUDIO_FILE" -y 2> /app/data/logs/ffmpeg_
 
 if [ $? -eq 0 ]; then
     log_success "Audio extraction successful: $AUDIO_FILE"
-    # Output only the filename without logging
-    printf "%s" "$AUDIO_FILE"
     exit 0
 else
     log_error "Failed to extract audio from $VIDEO_FILE. See logs for details."

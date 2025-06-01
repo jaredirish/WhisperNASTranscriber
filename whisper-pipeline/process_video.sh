@@ -23,7 +23,7 @@ FILENAME=$(basename "$VIDEO_FILE")
 FILENAME_NO_EXT="${FILENAME%.*}"
 
 # Convert video to audio
-AUDIO_OUTPUT=$(/app/convert_audio.sh "$VIDEO_FILE" 2>/dev/null)
+/app/convert_audio.sh "$VIDEO_FILE"
 AUDIO_EXIT_CODE=$?
 
 if [ $AUDIO_EXIT_CODE -ne 0 ]; then
@@ -31,10 +31,14 @@ if [ $AUDIO_EXIT_CODE -ne 0 ]; then
     exit 1
 fi
 
-log_success "Video converted to audio: $AUDIO_OUTPUT"
+# Calculate the audio file path
+AUDIO_DIR=$(jq -r '.paths.audio' /app/config.json)
+AUDIO_FILE="$AUDIO_DIR/$FILENAME_NO_EXT.mp3"
+
+log_success "Video converted to audio: $AUDIO_FILE"
 
 # Transcribe audio to text
-/app/transcribe.sh "$AUDIO_OUTPUT"
+/app/transcribe.sh "$AUDIO_FILE"
 TRANSCRIBE_EXIT_CODE=$?
 
 if [ $TRANSCRIBE_EXIT_CODE -ne 0 ]; then

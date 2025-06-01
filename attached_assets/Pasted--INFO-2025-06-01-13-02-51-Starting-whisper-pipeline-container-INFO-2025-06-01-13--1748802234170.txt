@@ -1,0 +1,53 @@
+ 
+      
+[INFO] 2025-06-01 13:02:51 - Starting whisper-pipeline container
+
+[INFO] 2025-06-01 13:02:51 - Model small already exists at /app/data/models/ggml-small.bin
+
+[INFO] 2025-06-01 13:02:51 - Starting video monitoring service
+
+[INFO] 2025-06-01 13:02:52 - Starting video monitoring service. Checking for new videos every 120 seconds.
+
+[INFO] 2025-06-01 18:16:59 - New video found: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4
+
+[INFO] 2025-06-01 18:16:59 - Processing video: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4
+
+[SUCCESS] 2025-06-01 18:17:03 - Video converted to audio: [INFO] 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[SUCCESS] 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[INFO] 2025-06-01 18:17:03 - Transcribing audio: [INFO] 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[SUCCESS] 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3 with model: small
+
+[INFO] 2025-06-01 18:17:03 - Using whisper executable: ./build/bin/main
+
+WARNING: The binary 'main' is deprecated.
+
+ Please use 'whisper-cli' instead.
+
+ See https://github.com/ggerganov/whisper.cpp/tree/master/examples/deprecation-warning/README.md for more information.
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n''/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3.txt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n''/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3.vtt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n''/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3.srt': No such file or directory
+
+mv: cannot stat ''$'\033''[0;34m[INFO]'$'\033''[0m 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n\033''[0;32m[SUCCESS]'$'\033''[0m 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3'$'\n''/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3.json': No such file or directory
+
+[ERROR] 2025-06-01 18:17:03 - Failed to transcribe [INFO] 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[SUCCESS] 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[ERROR] 2025-06-01 18:17:03 - Failed to transcribe audio: [INFO] 2025-06-01 18:17:00 - Converting video to audio: /app/data/videos/reo 5mp ptz-20250528-121141-1748427101078-7.mp4 -> /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+[SUCCESS] 2025-06-01 18:17:03 - Audio extraction successful: /app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
+
+/app/data/audio/reo 5mp ptz-20250528-121141-1748427101078-7.mp3
